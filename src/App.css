@@ -88,8 +88,10 @@
 }
 
 .winnerList {
+	display: flex;
+	flex-direction: column;
 	padding-left: 5%;
-	width: 30%;
+	width: 34%;
 	font-size: 2rem;
 	color: white;
 }

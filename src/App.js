@@ -2,6 +2,7 @@ import DownArrow from "./icons/arrow-circle-down.svg";
 import { Button, Textarea } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import structuredClone from "@ungap/structured-clone";
+import SlotCounter from 'react-slot-counter';
 import {
 	NumberInput,
 	NumberInputField,
@@ -18,7 +19,6 @@ function App() {
 	let [listOfNames, setListOfNames] = React.useState([""]);
 	let [actualWinners, setActualWinners] = React.useState([]);
 	let [winnerIndexes, setWinnerIndexes] = React.useState([]);
-	let shuffledData = [""];
 	const [numberOfWinners, setNumberOfWinners] = React.useState(1);
 
 	const [spin, setSpin] = React.useState(false);
@@ -56,7 +56,10 @@ function App() {
 	}
 
 	function startSpin() {
+		setActualWinners([])
+
 		let indexer = [...Array(listOfNames.length).keys()];
+		console.log(indexer)
 		indexer = shuffle(indexer);
 
 		if (listOfNames.length < numberOfWinners) {
@@ -78,8 +81,10 @@ function App() {
 		<>
 			<div class="mainBodyWrapper">
 				<h1 class="title kaifont white">抽站</h1>
-				<img src={DownArrow} alt="down arrow" />
-				<div class="inputSection">
+				<a href="#section2">
+					<img src={DownArrow} alt="down arrow" />
+				</a>
+				<div class="inputSection" id="section2">
 					<div class="names">
 						<Textarea
 							value={rawTextValue}
@@ -123,10 +128,11 @@ function App() {
 						</div>
 					</div>
 				</div>
-				<img src={DownArrow} alt="down arrow" />
+				<a href="#section3">
+					<img src={DownArrow} alt="down arrow" />
+				</a>
 
-				<div class="rafflesection"></div>
-				<div class="wheelSection">
+				<div class="wheelSection" id="section3">
 					<div class="buttonSection">
 						<ChakraProvider>
 							<Button
@@ -139,8 +145,10 @@ function App() {
 								colorScheme="yellow"
 								variant="solid"
 								onClick={() => {
+
 									startSpin();
 								}}
+								isLoading={spin}
 							>
 								转
 							</Button>
@@ -152,10 +160,12 @@ function App() {
 						setSpin={setSpin}
 						data={listOfNames}
 						winners={actualWinners}
+						setActualWinners={setActualWinners}
 						winnerIndexes={winnerIndexes}
 						numberOfWinners={numberOfWinners}
+						setData={setListOfNames}
 					/>
-					<div class="winnerList">Winners</div>
+					<div class="winnerList">{actualWinners.map((oneWinner) => (<SlotCounter value={oneWinner} />))}</div>
 				</div>
 				<div class="footer">
 					<div style={{ height: "1.4rem" }}></div>
