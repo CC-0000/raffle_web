@@ -83,7 +83,7 @@ function Slot({
 					}, 1000)
 				}}
 				spinDuration={0.3}
-				fontSize={20}
+				fontSize={500/data.length}
 				radiusLineWidth={0}
 			/>
 		</>
