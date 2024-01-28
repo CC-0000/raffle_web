@@ -100,32 +100,6 @@ function App() {
 						></Textarea>
 					</div>
 					<div class="settings">
-						<div class="winners">
-							<h2 class="winnerText">贏家人數： </h2>
-							<div class="selector">
-								<NumberInput
-									onChange={(value) => setNumberOfWinners(value)}
-									value={numberOfWinners}
-									height={"2rem"}
-									defaultValue={1}
-									min={1}
-									max={20}
-									size="lg"
-								>
-									<NumberInputField
-										height={"2.4rem"}
-										borderWidth={"0.2rem"}
-										borderColor={"#E6C200"}
-										borderRadius={"1.5%"}
-										fontSize={"1.5rem"}
-									/>
-									<NumberInputStepper marginTop={"6px"}>
-										<NumberIncrementStepper />
-										<NumberDecrementStepper />
-									</NumberInputStepper>
-								</NumberInput>
-							</div>
-						</div>
 					</div>
 				</div>
 				<a href="#section3">
@@ -165,6 +139,33 @@ function App() {
 						numberOfWinners={numberOfWinners}
 						setData={setListOfNames}
 					/>
+											<div class="winners">
+							<h2 class="winnerText">贏家人數： </h2>
+							<div class="selector">
+								<NumberInput
+									onChange={(value) => setNumberOfWinners(value)}
+									value={numberOfWinners}
+									height={"2rem"}
+									defaultValue={1}
+									min={1}
+									max={20}
+									size="lg"
+								>
+									<NumberInputField
+										height={"2.4rem"}
+										borderWidth={"0.2rem"}
+										borderColor={"#E6C200"}
+										borderRadius={"1.5%"}
+										fontSize={"1.5rem"}
+									/>
+									<NumberInputStepper marginTop={"6px"}>
+										<NumberIncrementStepper />
+										<NumberDecrementStepper />
+									</NumberInputStepper>
+								</NumberInput>
+							</div>
+						</div>
+
 					<div class="winnerList">{actualWinners.map((oneWinner) => (<SlotCounter value={oneWinner} />))}</div>
 				</div>
 				<div class="footer">
