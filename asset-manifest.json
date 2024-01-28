@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/raffle_web/static/css/main.ea856cd1.css",
-    "main.js": "/raffle_web/static/js/main.7f9c8e81.js",
+    "main.js": "/raffle_web/static/js/main.25b85b4e.js",
     "static/js/787.e9608a46.chunk.js": "/raffle_web/static/js/787.e9608a46.chunk.js",
     "static/media/background.png": "/raffle_web/static/media/background.789dcde572c0f1219ec5.png",
     "static/media/FZKai-Z03S Regular.ttf": "/raffle_web/static/media/FZKai-Z03S Regular.a1873b92fba7dba7c996.ttf",
     "index.html": "/raffle_web/index.html",
     "static/media/arrow-circle-down.svg": "/raffle_web/static/media/arrow-circle-down.6a0da9fe42531d2e7b4b016bb185688c.svg",
     "main.ea856cd1.css.map": "/raffle_web/static/css/main.ea856cd1.css.map",
-    "main.7f9c8e81.js.map": "/raffle_web/static/js/main.7f9c8e81.js.map",
+    "main.25b85b4e.js.map": "/raffle_web/static/js/main.25b85b4e.js.map",
     "787.e9608a46.chunk.js.map": "/raffle_web/static/js/787.e9608a46.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ea856cd1.css",
-    "static/js/main.7f9c8e81.js"
+    "static/js/main.25b85b4e.js"
   ]
 }
