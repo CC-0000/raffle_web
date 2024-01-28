@@ -1,0 +1,121 @@
+@font-face {
+	font-family: "Kai";
+	src: local("Kai"), url(./fonts/FZKai-Z03S\ Regular.ttf) format("woff");
+}
+
+.kaifont {
+	font-family: "Kai";
+}
+
+.title {
+	padding-top: 20%;
+	margin: 0%;
+	font-size: 12rem;
+	/* color: goldenrod; */
+
+	background: linear-gradient(
+		to top,
+		rgba(194, 0, 0, 1) 0%,
+		rgba(252, 208, 53, 0.9359943806624212) 69%,
+		rgba(255, 255, 255, 0.8547618876652223) 100%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.mainBodyWrapper {
+	background-image: url(./images/background.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 5000px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+}
+
+.inputSection {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: center;
+	height: 60rem;
+}
+
+.names {
+	width: 60%;
+	display: flex;
+	justify-content: center;
+}
+
+.settings {
+	width: 40%;
+	display: flex;
+	justify-content: left;
+}
+
+.winners {
+	flex-grow: 1;
+}
+
+.winnerText {
+	color: white;
+}
+
+.selector {
+	width: 30%;
+	height: 10rem;
+	display: flex;
+}
+
+.wheelSection {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.buttonSection {
+	width: 10%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-left: 2%;
+}
+
+.winnerList {
+	padding-left: 5%;
+	width: 30%;
+	font-size: 2rem;
+	color: white;
+}
+
+.footerContent {
+	color: #855d5d;
+}
+
+.footer {
+	height: 6rem;
+	width: 100%;
+	background-color: #1c0004;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/* align-items: center; */
+}
+
+.footerInside {
+	margin-left: 10%;
+	margin-right: 10%;
+	color: white;
+	display: flex;
+	border-top: 0.1px solid #7e0013b5;
+	flex-grow: 1;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
