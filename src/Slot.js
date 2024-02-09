@@ -26,9 +26,15 @@ function Slot({
 	// };
 
 	useEffect(() => {
-		console.log(mustSpin, "prize Number " + prizeNumber, numberOfWinners, winnerIndexes);
-		if (spin && !mustSpin) { // make sure the last spin has completed and we are still supposed to be spinning
-			if (prizeNumber+1 < numberOfWinners) {
+		console.log(
+			mustSpin,
+			"prize Number " + prizeNumber,
+			numberOfWinners,
+			winnerIndexes
+		);
+		if (spin && !mustSpin) {
+			// make sure the last spin has completed and we are still supposed to be spinning
+			if (prizeNumber + 1 < numberOfWinners) {
 				// spin again if we still have winners left to go through
 				const newPrizeNumber = prizeNumber + 1;
 				setPrizeNumber(newPrizeNumber);
@@ -37,10 +43,10 @@ function Slot({
 				setSpin(false);
 				setReady(false);
 				setPrizeNumber(-1);
-				let tmpData = structuredClone(data)
-				for (let i = 0; i < winners.length; i++){
+				let tmpData = structuredClone(data);
+				for (let i = 0; i < winners.length; i++) {
 					let rmIndex = tmpData.findIndex((num) => num === winners[i]);
-					tmpData.splice(rmIndex, 1); 
+					tmpData.splice(rmIndex, 1);
 				}
 				setData(tmpData);
 			}
@@ -49,15 +55,13 @@ function Slot({
 
 	useEffect(() => {
 		// this fires when prizeNumber changes
-		if(ready){
-			if(prizeNumber < numberOfWinners){
+		if (ready) {
+			if (prizeNumber < numberOfWinners) {
 				setMustSpin(true);
+			} else {
 			}
-			else{
-			}
-	
 		}
-	}, [prizeNumber, ready])
+	}, [prizeNumber, ready]);
 
 	return (
 		<>
@@ -77,13 +81,13 @@ function Slot({
 						// if (prizeNumber < numberOfWinners){
 
 						// }
-						setActualWinners([...winners, data[winnerIndexes[prizeNumber]]])
+						setActualWinners([...winners, data[winnerIndexes[prizeNumber]]]);
 						// remove the winner from the data list
 						setMustSpin(false);
-					}, 1000)
+					}, 1000);
 				}}
 				spinDuration={0.3}
-				fontSize={500/data.length}
+				fontSize={30 * Math.pow(0.55, data.length / 50)}
 				radiusLineWidth={0}
 			/>
 		</>

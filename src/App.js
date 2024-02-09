@@ -2,7 +2,7 @@ import DownArrow from "./icons/arrow-circle-down.svg";
 import { Button, Textarea } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import structuredClone from "@ungap/structured-clone";
-import SlotCounter from 'react-slot-counter';
+import SlotCounter from "react-slot-counter";
 import {
 	NumberInput,
 	NumberInputField,
@@ -56,21 +56,39 @@ function App() {
 	}
 
 	function startSpin() {
-		setActualWinners([])
-
-		let indexer = [...Array(listOfNames.length).keys()];
-		console.log(indexer)
-		indexer = shuffle(indexer);
-
 		if (listOfNames.length < numberOfWinners) {
 			return;
 		}
+
+		setActualWinners([]);
+
+		let indexer = [...Array(listOfNames.length).keys()];
+		indexer = shuffle(indexer);
+
 		let tmpWinners = [];
 		for (let i = 0; i < numberOfWinners; i++) {
 			tmpWinners.push(indexer[i]);
 		}
 		setWinnerIndexes(tmpWinners);
 		setSpin(true);
+	}
+
+	function scrollToMid() {
+		let e = document.getElementById("section2");
+		e.scrollIntoView({
+			block: "start",
+			behavior: "smooth",
+			inline: "start",
+		});
+	}
+
+	function scrollToBottom() {
+		let e = document.getElementById("section3");
+		e.scrollIntoView({
+			block: "start",
+			behavior: "smooth",
+			inline: "start",
+		});
 	}
 
 	useEffect(() => {
@@ -80,10 +98,15 @@ function App() {
 	return (
 		<>
 			<div class="mainBodyWrapper">
-				<h1 class="title kaifont white">抽站</h1>
-				<a href="#section2">
+				<div class="titleArea">
+					<h1 class="title barlow">Raffle Web</h1>
+					<p class="subtitle">
+						An simplistic prize selection website with multi-winner support
+					</p>
+				</div>
+				<div onClick={scrollToMid}>
 					<img src={DownArrow} alt="down arrow" />
-				</a>
+				</div>
 				<div class="inputSection" id="section2">
 					<div class="names">
 						<Textarea
@@ -99,19 +122,18 @@ function App() {
 							borderRadius={"1.5%"}
 						></Textarea>
 					</div>
-					<div class="settings">
-					</div>
+					<div class="settings"></div>
 				</div>
-				<a href="#section3">
+				<div onClick={scrollToBottom}>
 					<img src={DownArrow} alt="down arrow" />
-				</a>
-
+				</div>
+				<div class="spacer"></div>
 				<div class="wheelSection" id="section3">
 					<div class="buttonSection">
 						<ChakraProvider>
 							<Button
-								fontFamily={"Kai"}
-								fontSize={"3rem"}
+								fontFamily={"Barlow"}
+								fontSize={"2rem"}
 								margin={"100%"}
 								borderRadius={"10rem"}
 								height={"8rem"}
@@ -119,12 +141,11 @@ function App() {
 								colorScheme="yellow"
 								variant="solid"
 								onClick={() => {
-
 									startSpin();
 								}}
 								isLoading={spin}
 							>
-								转
+								Spin
 							</Button>
 						</ChakraProvider>
 					</div>
@@ -139,34 +160,38 @@ function App() {
 						numberOfWinners={numberOfWinners}
 						setData={setListOfNames}
 					/>
-											<div class="winners">
-							<h2 class="winnerText">贏家人數： </h2>
-							<div class="selector">
-								<NumberInput
-									onChange={(value) => setNumberOfWinners(value)}
-									value={numberOfWinners}
-									height={"2rem"}
-									defaultValue={1}
-									min={1}
-									max={20}
-									size="lg"
-								>
-									<NumberInputField
-										height={"2.4rem"}
-										borderWidth={"0.2rem"}
-										borderColor={"#E6C200"}
-										borderRadius={"1.5%"}
-										fontSize={"1.5rem"}
-									/>
-									<NumberInputStepper marginTop={"6px"}>
-										<NumberIncrementStepper />
-										<NumberDecrementStepper />
-									</NumberInputStepper>
-								</NumberInput>
-							</div>
+					<div class="winners">
+						<h2 class="winnerText barlowfont">Number of Winners: </h2>
+						<div class="selector">
+							<NumberInput
+								onChange={(value) => setNumberOfWinners(value)}
+								value={numberOfWinners}
+								height={"2rem"}
+								defaultValue={1}
+								min={1}
+								max={20}
+								size="lg"
+							>
+								<NumberInputField
+									height={"2.4rem"}
+									borderWidth={"0.2rem"}
+									borderColor={"#E6C200"}
+									borderRadius={"1.5%"}
+									fontSize={"1.5rem"}
+								/>
+								<NumberInputStepper marginTop={"6px"}>
+									<NumberIncrementStepper />
+									<NumberDecrementStepper />
+								</NumberInputStepper>
+							</NumberInput>
 						</div>
+					</div>
 
-					<div class="winnerList">{actualWinners.map((oneWinner) => (<SlotCounter value={oneWinner} />))}</div>
+					<div class="winnerList">
+						{actualWinners.map((oneWinner) => (
+							<SlotCounter value={oneWinner} />
+						))}
+					</div>
 				</div>
 				<div class="footer">
 					<div style={{ height: "1.4rem" }}></div>
